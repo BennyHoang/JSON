@@ -1,0 +1,21 @@
+﻿{
+  "items": [
+    {
+      "key": "First",
+      "temperature": 1002222220
+    },
+    {
+      "key": "Second",
+      "temperature": 211
+    },
+    {
+      "key": "Last",
+      "temperature": "Mixed"
+    }
+  ],
+  "obj": {
+    "number": 1.2345e-6,
+    "enabled": true
+  },
+  "message": "Strings have to be in double-quotes."
+}
