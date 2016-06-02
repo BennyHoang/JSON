@@ -23,6 +23,11 @@ namespace TemperatureLogger.Controllers
         {
             return View();
         }
+
+        public ActionResult Devices()
+        {
+            return View();
+        }
     
       }
 }

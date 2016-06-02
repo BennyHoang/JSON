@@ -290,6 +290,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\Temperature.cshtml" />
     <Content Include="Views\Home\Humidity.cshtml" />
+    <Content Include="Views\Home\Devices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
