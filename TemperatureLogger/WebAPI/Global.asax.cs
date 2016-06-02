@@ -13,8 +13,8 @@ namespace WebAPI
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
             
-            GlobalConfiguration.Configuration.Formatters.Remove(
-                GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+          //  GlobalConfiguration.Configuration.Formatters.Remove(
+            //    GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
     }
 }
