@@ -30,4 +30,6 @@ textarea {
 
 .index-box {
     padding: 70px;
+    margin-top: 3%;
+    max-width: 250px;
 }
