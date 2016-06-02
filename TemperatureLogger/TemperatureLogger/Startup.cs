@@ -12,7 +12,7 @@ namespace TemperatureLogger
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            
             /*
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
