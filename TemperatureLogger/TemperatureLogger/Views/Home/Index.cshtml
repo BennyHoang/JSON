@@ -13,13 +13,31 @@
 
         <div class="row">
             <div class="col-md-4">
-                @Html.ActionLink("Temperature", "Temperature", "Home", new { @class = "btn btn-default index-box" })
+                <a href="@Url.Action("Temperature")" class="btn btn-default index-box">
+                    <i class="glyphicon glyphicon-cloud gi-2x"></i>
+                    <div class="col-xs-12">
+                        Temperature
+                    </div>
+                </a>
+
             </div>
             <div class="col-md-4">
-                @Html.ActionLink("Humidity", "Humidity", "Home", new {@class = "btn btn-default index-box"})
+                <a href="@Url.Action("Humidity")" class="btn btn-default index-box">
+                    <i class="glyphicon glyphicon-tint gi-2x"></i>
+                    <div class="col-xs-12">
+                        Humidity
+                    </div>
+                </a>
+
             </div>
             <div class="col-md-4">
-                @Html.ActionLink("Devices", "Devices", "Home", new { @class = "btn btn-default index-box" })
+                <a href="@Url.Action("Devices")" class="btn btn-default index-box">
+                    <i class="glyphicon glyphicon-phone gi-2x"></i>
+                    <div class="col-xs-12">
+                        Devices
+                    </div>
+                </a>
+
             </div>
         </div>
 
