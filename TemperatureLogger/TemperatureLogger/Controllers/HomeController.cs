@@ -12,6 +12,17 @@ namespace TemperatureLogger.Controllers
         {
             return View();
         }
+
+        public ActionResult Temperature()
+        {
+            return View();
+            
+        }
+
+        public ActionResult Humidity()
+        {
+            return View();
+        }
     
       }
 }
