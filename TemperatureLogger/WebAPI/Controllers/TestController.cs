@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             // WebClient used to download the JSON file
             using (var wc = new WebClient())
             {
-                var url = "https://pptlbhstorage.blob.core.windows.net/temperature/0_7622a22009224c78a46c0b2bc0a3fd82_1.json";
+                var url = "https://pptlbhstorage.blob.core.windows.net/temperature/0_8f33a0187e864ce18164780615eff5e2_1.json";
                 // Used to hold and add a ']' to the downloaded JSON
                 StringBuilder builder = new StringBuilder();
                 builder.Append(await wc.DownloadStringTaskAsync(url));
