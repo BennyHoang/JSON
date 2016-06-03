@@ -1,0 +1,83 @@
+#include "Adafruit_DHT/Adafruit_DHT.h"
+
+#define DHTPIN 2
+
+// Uncomment whatever type you're using!
+#define DHTTYPE DHT11		// DHT 11 
+//#define DHTTYPE DHT22		// DHT 22 (AM2302)
+//#define DHTTYPE DHT21		// DHT 21 (AM2301)
+
+
+DHT dht(DHTPIN, DHTTYPE);
+
+char Org[] = "ORGANIZATION_NAME";
+char Disp[] = "DISPLAY_NAME";
+char Locn[] = "LOCATION";
+
+/*  The amount of time (in milliseconds) to wait between each 
+    publication of data through Webhook.
+    Webhooks are rate limited to a maximum of 10/minute/device
+    if we can only send 10 times in a minute, that means we can send on average
+    about once every six seconds, or 6000 milliseconds.  So to avoid any 
+    rate limits by the particle cloud, keep the sendDelay at at least 6000++.
+*/
+int sendDelay = 6000;
+   float h = 0;
+  double f = 0;
+  float t = 0;
+  
+  
+void setup()
+{
+    Particle.variable("Temp", &f, DOUBLE);
+  
+  dht.begin();
+  Serial.begin(9600);
+  delay(10000);
+}
+
+ 
+void loop()
+{
+
+
+  h = dht.getHumidity();
+  f = dht.getTempCelcius();
+  t = dht.getTempFarenheit();
+  
+  //Error message if DHT sensor is corrupt
+  if (isnan(h) || isnan(t) || isnan(f)) {
+    Serial.println("");
+    Serial.println("############################################################");
+    Serial.println("Failed to read from DHT sensor!");
+    Serial.println("h=" + String(h) + " t=" + String(t) + " f=" + String(f));
+    Serial.println("############################################################");
+    Serial.println("");
+    return;
+  } 
+  
+  generatePayload();
+  
+
+}
+
+void generatePayload(){
+  Serial.println();
+  Serial.println("----------");
+  Serial.println();
+  Serial.println("h=" + String(h) + " t=" + String(t) + " f=" + String(f));
+  char payload[255];
+  snprintf(payload, sizeof(payload),"{\"s\":\"Weather\",\"u\":\"F\",\"m\":\"Temperature\",\"v\": %f,\"o\":\"%s\",\"d\":\"%s\",\"l\":\"%s\"}",f,Org,Disp,Locn);
+  Serial.println(payload);
+  
+       
+  // Send the temperature data payload
+  Particle.publish("PublishToEventHub", payload);
+  delay(sendDelay);
+  snprintf(payload, sizeof(payload),"{\"s\":\"Weather\",\"u\":\"%%\",\"m\":\"Humidity\",\"v\": %f,\"o\":\"%s\",\"d\":\"%s\",\"l\":\"%s\"}",h,Org,Disp,Locn);
+  Serial.println(payload);
+
+  
+  Particle.publish("PublishToEventHub", payload);
+  delay(sendDelay);
+}
