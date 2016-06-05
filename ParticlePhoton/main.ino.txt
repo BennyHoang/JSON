@@ -21,7 +21,7 @@ char Locn[] = "LOCATION";
     about once every six seconds, or 6000 milliseconds.  So to avoid any 
     rate limits by the particle cloud, keep the sendDelay at at least 6000++.
 */
-int sendDelay = 6000;
+unsigned long sendDelay = 2*60*1000;
    float h = 0;
   double f = 0;
   float t = 0;
